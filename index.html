@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio BTS SIO SISR - Louis Guézet</title>
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=JetBrains+Mono:wght@300;400;500;600&display=swap" rel="stylesheet">
+
     <style>
         * {
             margin: 0;
@@ -18,11 +19,16 @@
             --secondary: #00d4ff;
             --dark: #0a0e27;
             --dark-alt: #151b3d;
+            --dark-card: #111735;
             --gray: #8892b0;
             --gray-light: #ccd6f6;
             --white: #e6f1ff;
             --accent: #64ffda;
             --bg-gradient: linear-gradient(135deg, #0a0e27 0%, #151b3d 100%);
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
@@ -33,6 +39,19 @@
             overflow-x: hidden;
         }
 
+        a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        section {
+            scroll-margin-top: 110px;
+        }
+
         /* Navigation */
         nav {
             position: fixed;
@@ -41,24 +60,26 @@
             background: rgba(10, 14, 39, 0.95);
             backdrop-filter: blur(10px);
             z-index: 1000;
-            padding: 1.5rem 0;
+            padding: 1.2rem 0;
             border-bottom: 1px solid rgba(100, 255, 218, 0.1);
         }
 
         .nav-container {
-            max-width: 1200px;
+            max-width: 1250px;
             margin: 0 auto;
             padding: 0 2rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            gap: 2rem;
         }
 
         .logo {
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             font-weight: 600;
             color: var(--accent);
             font-family: 'IBM Plex Mono', monospace;
+            white-space: nowrap;
         }
 
         .logo::before {
@@ -68,17 +89,20 @@
 
         .nav-links {
             display: flex;
-            gap: 2rem;
+            gap: 1.2rem;
             list-style: none;
+            flex-wrap: wrap;
+            justify-content: flex-end;
         }
 
         .nav-links a {
             color: var(--gray);
             text-decoration: none;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             transition: all 0.3s ease;
             position: relative;
             padding: 0.5rem 0;
+            white-space: nowrap;
         }
 
         .nav-links a::before {
@@ -115,7 +139,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: 
+            background:
                 radial-gradient(circle at 20% 50%, rgba(0, 102, 255, 0.1) 0%, transparent 50%),
                 radial-gradient(circle at 80% 80%, rgba(0, 212, 255, 0.1) 0%, transparent 50%);
             z-index: 0;
@@ -125,7 +149,7 @@
             max-width: 1200px;
             width: 100%;
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 1fr;
             gap: 4rem;
             align-items: center;
             position: relative;
@@ -154,6 +178,7 @@
             color: var(--gray);
             margin-bottom: 2rem;
             line-height: 1.8;
+            max-width: 850px;
             animation: slideInLeft 0.8s ease-out 0.4s backwards;
         }
 
@@ -175,47 +200,7 @@
             background: rgba(100, 255, 218, 0.1);
             transform: translateY(-2px);
             box-shadow: 0 10px 30px rgba(100, 255, 218, 0.2);
-        }
-
-        .hero-image {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            animation: slideInRight 0.8s ease-out;
-        }
-
-        .profile-container {
-            position: relative;
-            width: 350px;
-            height: 350px;
-        }
-
-        .profile-container::before {
-            content: '';
-            position: absolute;
-            top: -10px;
-            left: -10px;
-            right: -10px;
-            bottom: -10px;
-            background: linear-gradient(45deg, var(--primary), var(--accent));
-            border-radius: 8px;
-            opacity: 0.3;
-            animation: pulse 3s ease-in-out infinite;
-        }
-
-        .profile-placeholder {
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, var(--dark-alt), var(--dark));
-            border: 2px solid var(--accent);
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 4rem;
-            color: var(--accent);
-            position: relative;
-            z-index: 1;
+            text-decoration: none;
         }
 
         /* Sections */
@@ -234,7 +219,6 @@
         }
 
         .section-title::before {
-            content: '01. ';
             color: var(--accent);
             font-size: 1.5rem;
             margin-right: 0.5rem;
@@ -252,7 +236,7 @@
 
         /* About Section */
         #about .section-title::before { content: '01. '; }
-        
+
         .about-content {
             display: grid;
             grid-template-columns: 2fr 1fr;
@@ -299,7 +283,7 @@
 
         .skills-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
             gap: 2rem;
         }
 
@@ -308,7 +292,7 @@
             padding: 2rem;
             border-radius: 8px;
             border-top: 3px solid var(--primary);
-            transition: transform 0.3s ease;
+            transition: transform 0.3s ease, border-color 0.3s ease;
         }
 
         .skill-category:hover {
@@ -334,12 +318,17 @@
             margin-bottom: 1.5rem;
         }
 
+        .skill-item:last-child {
+            margin-bottom: 0;
+        }
+
         .skill-name {
             display: flex;
             justify-content: space-between;
             margin-bottom: 0.5rem;
             color: var(--gray-light);
             font-size: 0.95rem;
+            gap: 1rem;
         }
 
         .skill-bar {
@@ -356,8 +345,122 @@
             transition: width 1s ease;
         }
 
+        /* Bloc 1 Section */
+        #bloc1 .section-title::before { content: '03. '; }
+
+        .bloc-intro {
+            background: var(--dark-alt);
+            padding: 2rem;
+            border-radius: 8px;
+            border-left: 4px solid var(--accent);
+            margin-bottom: 2.5rem;
+        }
+
+        .bloc-intro h3 {
+            color: var(--white);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .bloc-intro p {
+            color: var(--gray);
+            margin-bottom: 1rem;
+        }
+
+        .bloc1-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
+            gap: 2rem;
+        }
+
+        .bloc-card {
+            background: var(--dark-alt);
+            border-radius: 8px;
+            border: 1px solid rgba(100, 255, 218, 0.12);
+            overflow: hidden;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .bloc-card:hover {
+            transform: translateY(-7px);
+            border-color: var(--accent);
+        }
+
+        .bloc-card-header {
+            background: linear-gradient(135deg, rgba(0, 102, 255, 0.45), rgba(21, 27, 61, 0.95));
+            padding: 1.5rem;
+            border-bottom: 2px solid rgba(100, 255, 218, 0.55);
+        }
+
+        .bloc-card-header h3 {
+            color: var(--white);
+            font-size: 1.2rem;
+            margin-bottom: 0.4rem;
+        }
+
+        .bloc-card-header p {
+            color: var(--accent);
+            font-size: 0.85rem;
+        }
+
+        .bloc-card-body {
+            padding: 1.5rem;
+        }
+
+        .bloc-card-body h4 {
+            color: var(--accent);
+            margin: 1rem 0 0.6rem;
+            font-size: 1rem;
+        }
+
+        .bloc-card-body h4:first-child {
+            margin-top: 0;
+        }
+
+        .bloc-card-body ul {
+            list-style: none;
+            color: var(--gray);
+        }
+
+        .bloc-card-body li {
+            padding: 0.35rem 0;
+            padding-left: 1.3rem;
+            position: relative;
+            font-size: 0.92rem;
+        }
+
+        .bloc-card-body li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+        }
+
+        .procedure-links {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .procedure-link {
+            display: inline-block;
+            padding: 0.6rem 0.8rem;
+            border: 1px solid rgba(100, 255, 218, 0.35);
+            border-radius: 4px;
+            background: rgba(0, 102, 255, 0.12);
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .procedure-link:hover {
+            background: rgba(100, 255, 218, 0.1);
+            transform: translateX(4px);
+            text-decoration: none;
+        }
+
         /* Stages Section */
-        #stages .section-title::before { content: '03. '; }
+        #stages .section-title::before { content: '04. '; }
 
         .stage-timeline {
             position: relative;
@@ -444,6 +547,10 @@
             color: var(--primary);
         }
 
+        .stage-link {
+            margin-bottom: 1.5rem;
+        }
+
         .tech-tags {
             display: flex;
             flex-wrap: wrap;
@@ -461,11 +568,11 @@
         }
 
         /* Projects Section */
-        #projets .section-title::before { content: '04. '; }
+        #projets .section-title::before { content: '05. '; }
 
         .projects-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
             gap: 2rem;
         }
 
@@ -514,8 +621,13 @@
             line-height: 1.7;
         }
 
+        .project-link {
+            display: block;
+            margin-bottom: 10px;
+        }
+
         /* Certifications Section */
-        #certifications .section-title::before { content: '05. '; }
+        #certifications .section-title::before { content: '06. '; }
 
         .certif-grid {
             display: grid;
@@ -530,6 +642,7 @@
             text-align: center;
             border: 2px solid transparent;
             transition: all 0.3s ease;
+            height: 100%;
         }
 
         .certif-item:hover {
@@ -548,11 +661,6 @@
             margin-bottom: 0.5rem;
         }
 
-        .certif-status {
-            color: var(--accent);
-            font-size: 0.9rem;
-        }
-
         .veille-section {
             margin-top: 4rem;
             background: var(--dark-alt);
@@ -567,9 +675,14 @@
             margin-bottom: 2rem;
         }
 
+        .veille-section p {
+            color: var(--gray);
+            margin-bottom: 2rem;
+        }
+
         .veille-items {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 1.5rem;
         }
 
@@ -581,103 +694,39 @@
             border-left: 3px solid var(--primary);
         }
 
-        /* Contact Section */
-        #contact .section-title::before { content: '06. '; }
-
-        .contact-container {
-            max-width: 800px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .contact-intro {
-            color: var(--gray);
-            font-size: 1.2rem;
-            margin-bottom: 3rem;
-            line-height: 1.8;
-        }
-
-        .contact-form {
-            background: var(--dark-alt);
-            padding: 3rem;
+        .veille-exemples {
+            margin-top: 2.5rem;
+            background: rgba(0, 102, 255, 0.08);
+            padding: 2rem;
             border-radius: 8px;
-            border-top: 3px solid var(--accent);
+            border-left: 4px solid var(--accent);
         }
 
-        .form-group {
-            margin-bottom: 2rem;
-            text-align: left;
-        }
-
-        .form-group label {
-            display: block;
+        .veille-exemples h4 {
             color: var(--accent);
-            margin-bottom: 0.5rem;
-            font-weight: 500;
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
         }
 
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 1rem;
+        .veille-exemples-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .veille-exemple-card {
             background: var(--dark);
-            border: 2px solid rgba(100, 255, 218, 0.2);
-            border-radius: 4px;
-            color: var(--gray-light);
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 1rem;
-            transition: border-color 0.3s ease;
-        }
-
-        .form-group input:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: var(--accent);
-        }
-
-        .form-group textarea {
-            resize: vertical;
-            min-height: 150px;
-        }
-
-        .submit-button {
-            width: 100%;
             padding: 1.2rem;
-            background: transparent;
-            border: 2px solid var(--accent);
-            color: var(--accent);
-            font-size: 1.1rem;
-            font-weight: 600;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-family: 'JetBrains Mono', monospace;
+            border-radius: 6px;
+            border: 1px solid rgba(100, 255, 218, 0.15);
         }
 
-        .submit-button:hover {
-            background: rgba(100, 255, 218, 0.1);
-            transform: translateY(-2px);
+        .veille-exemple-card strong {
+            color: var(--white);
         }
 
-        .contact-info {
-            margin-top: 3rem;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(100, 255, 218, 0.2);
-        }
-
-        .contact-info p {
+        .veille-exemple-card span {
             color: var(--gray);
-            margin-bottom: 1rem;
-        }
-
-        .contact-info a {
-            color: var(--accent);
-            text-decoration: none;
-            font-weight: 500;
-        }
-
-        .contact-info a:hover {
-            text-decoration: underline;
         }
 
         /* Footer */
@@ -691,6 +740,10 @@
         footer p {
             color: var(--gray);
             font-size: 0.9rem;
+        }
+
+        footer a {
+            color: var(--accent);
         }
 
         /* Animations */
@@ -725,39 +778,6 @@
             }
         }
 
-        /* Responsive */
-        @media (max-width: 968px) {
-            .hero-content {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-
-            .hero-image {
-                order: -1;
-            }
-
-            .profile-container {
-                width: 250px;
-                height: 250px;
-            }
-
-            .hero-text h1 {
-                font-size: 2.5rem;
-            }
-
-            .about-content {
-                grid-template-columns: 1fr;
-            }
-
-            .nav-links {
-                display: none;
-            }
-
-            section {
-                padding: 4rem 1.5rem;
-            }
-        }
-
         /* Scroll animations */
         .fade-in {
             opacity: 0;
@@ -769,8 +789,100 @@
             opacity: 1;
             transform: translateY(0);
         }
+
+        /* Responsive */
+        @media (max-width: 1100px) {
+            .nav-container {
+                align-items: flex-start;
+                flex-direction: column;
+                gap: 0.8rem;
+            }
+
+            .nav-links {
+                justify-content: flex-start;
+                gap: 0.9rem;
+            }
+
+            .nav-links a {
+                font-size: 0.78rem;
+            }
+        }
+
+        @media (max-width: 968px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-text .description {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            section {
+                padding: 4rem 1.5rem;
+            }
+        }
+
+        @media (max-width: 650px) {
+            nav {
+                position: static;
+            }
+
+            section {
+                scroll-margin-top: 20px;
+            }
+
+            .nav-container {
+                padding: 0 1rem;
+            }
+
+            .nav-links {
+                flex-direction: column;
+                gap: 0.3rem;
+            }
+
+            .hero {
+                padding-top: 4rem;
+            }
+
+            .hero-text h1 {
+                font-size: 2rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .bloc1-grid,
+            .projects-grid,
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stage-timeline {
+                padding-left: 1rem;
+            }
+
+            .stage-item {
+                padding-left: 1.5rem;
+            }
+
+            .stage-item::before {
+                left: -1.5rem;
+            }
+        }
     </style>
 </head>
+
 <body>
     <!-- Navigation -->
     <nav>
@@ -780,52 +892,56 @@
                 <li><a href="#accueil">Accueil</a></li>
                 <li><a href="#about">À propos</a></li>
                 <li><a href="#competences">Compétences</a></li>
+                <li><a href="#bloc1">Bloc 1</a></li>
                 <li><a href="#stages">Stages</a></li>
                 <li><a href="#projets">Epreuves E5/E6</a></li>
                 <li><a href="#certifications">Certifications & Veille</a></li>
-                
             </ul>
         </div>
     </nav>
 
-    <!-- Hero Section -->
+    <!-- Accueil -->
     <section id="accueil" class="hero">
         <div class="hero-content">
             <div class="hero-text">
                 <h1>Bonjour, je suis<br>Louis Guézet</h1>
                 <p class="subtitle">Étudiant BTS SIO option SISR</p>
                 <p class="description">
-                    Passionné par les infrastructures systèmes et réseaux, je me spécialise dans l'administration, 
+                    Passionné par les infrastructures systèmes et réseaux, je me spécialise dans l'administration,
                     la sécurisation et l'optimisation des environnements IT.
                 </p>
-            </div>
+                <a class="cta-button" href="#bloc1">Voir le Bloc 1</a>
             </div>
         </div>
     </section>
 
-    <!-- About Section -->
+    <!-- À propos -->
     <section id="about" class="fade-in">
         <h2 class="section-title">À propos</h2>
+
         <div class="about-content">
             <div class="about-text">
                 <p>
-                    Je suis actuellement en BTS SIO (Services Informatiques aux Organisations) option SISR 
-                    (Solutions d'Infrastructure, Systèmes et Réseaux) au Raoul Follereau Nevers. 
-                    Ma formation me permet d'acquérir des compétences techniques approfondies dans la gestion 
+                    Je suis actuellement en BTS SIO (Services Informatiques aux Organisations) option SISR
+                    (Solutions d'Infrastructure, Systèmes et Réseaux) au lycée Raoul Follereau à Nevers.
+                    Ma formation me permet d'acquérir des compétences techniques dans la gestion
                     des infrastructures informatiques.
                 </p>
+
                 <p>
-                    Mon parcours m'a permis de développer une solide expertise en administration systèmes Windows 
-                    et Linux, en configuration et maintenance de réseaux, ainsi qu'en virtualisation et cybersécurité. 
-                    Je suis particulièrement intéressé par l'automatisation des tâches d'administration et 
-                    l'optimisation des performances systèmes.
+                    Mon parcours m'a permis de développer des compétences en administration systèmes Windows
+                    et Linux, en configuration et maintenance de réseaux, ainsi qu'en virtualisation et cybersécurité.
+                    Je suis particulièrement intéressé par l'administration des systèmes, le réseau et la sécurisation
+                    des services informatiques.
                 </p>
+
                 <p>
-                    Passionné par les technologies et en veille constante sur les évolutions du secteur, 
-                    je souhaite poursuivre dans l'administration systèmes et réseaux, en apportant mes 
+                    Passionné par les technologies et en veille constante sur les évolutions du secteur,
+                    je souhaite poursuivre dans l'administration systèmes et réseaux, en apportant mes
                     compétences techniques et ma rigueur au service des entreprises.
                 </p>
             </div>
+
             <div class="about-highlights">
                 <h3>Formation</h3>
                 <ul>
@@ -833,22 +949,24 @@
                     <li>Raoul Follereau Nevers</li>
                     <li>2024 - 2026</li>
                 </ul>
+
                 <h3 style="margin-top: 2rem;">Objectif professionnel</h3>
                 <ul>
                     <li>Administrateur Systèmes et Réseaux</li>
                     <li>Technicien Infrastructure IT</li>
-                    
                 </ul>
             </div>
         </div>
     </section>
 
-    <!-- Compétences Section -->
+    <!-- Compétences -->
     <section id="competences" class="fade-in">
         <h2 class="section-title">Compétences Techniques</h2>
+
         <div class="skills-grid">
             <div class="skill-category">
                 <h3>Systèmes d'exploitation</h3>
+
                 <div class="skill-item">
                     <div class="skill-name">
                         <span>Windows Server</span>
@@ -858,19 +976,21 @@
                         <div class="skill-progress" style="width: 85%"></div>
                     </div>
                 </div>
+
                 <div class="skill-item">
                     <div class="skill-name">
                         <span>Linux (Ubuntu/Debian)</span>
-                        <span>80%</span>
+                        <span>50%</span>
                     </div>
                     <div class="skill-bar">
                         <div class="skill-progress" style="width: 50%"></div>
                     </div>
                 </div>
+
                 <div class="skill-item">
                     <div class="skill-name">
                         <span>Active Directory</span>
-                        <span>75%</span>
+                        <span>60%</span>
                     </div>
                     <div class="skill-bar">
                         <div class="skill-progress" style="width: 60%"></div>
@@ -880,24 +1000,27 @@
 
             <div class="skill-category">
                 <h3>Réseaux</h3>
+
                 <div class="skill-item">
                     <div class="skill-name">
                         <span>Configuration switches/routeurs</span>
                         <span>60%</span>
                     </div>
                     <div class="skill-bar">
-                        <div class="skill-progress" style="width: 75%"></div>
+                        <div class="skill-progress" style="width: 60%"></div>
                     </div>
                 </div>
+
                 <div class="skill-item">
                     <div class="skill-name">
                         <span>TCP/IP, VLAN, VPN</span>
                         <span>50%</span>
                     </div>
                     <div class="skill-bar">
-                        <div class="skill-progress" style="width: 80%"></div>
+                        <div class="skill-progress" style="width: 50%"></div>
                     </div>
                 </div>
+
                 <div class="skill-item">
                     <div class="skill-name">
                         <span>DNS, DHCP</span>
@@ -909,128 +1032,313 @@
                 </div>
             </div>
 
-            
-<div class="skill-category">
-    <h3>Virtualisation</h3>
-    <div class="skill-item">
-        <div class="skill-name">
-            <span>VirtualBox</span>
-            <span>90%</span>
-        </div>
-        <div class="skill-bar">
-            <div class="skill-progress" style="width: 90%"></div>
-        </div>
-    </div>
-</div>
+            <div class="skill-category">
+                <h3>Virtualisation</h3>
 
-                </div>
                 <div class="skill-item">
                     <div class="skill-name">
-                        
+                        <span>VirtualBox</span>
+                        <span>90%</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 90%"></div>
+                    </div>
                 </div>
+
                 <div class="skill-item">
                     <div class="skill-name">
-                        
+                        <span>Machines virtuelles</span>
+                        <span>80%</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 80%"></div>
+                    </div>
                 </div>
             </div>
 
-            
-<div class="skill-category">
-    <h3>Cybersécurité</h3>
-    <div class="skill-item">
-        <div class="skill-name">
-            <span>Pare-feu (pfSense, Firewall)</span>
-            <span>60%</span>
-        </div>
-        <div class="skill-bar">
-            <div class="skill-progress" style="width: 60%"></div>
-        </div>
-    </div>
-</div>
+            <div class="skill-category">
+                <h3>Cybersécurité</h3>
 
-                </div>
                 <div class="skill-item">
                     <div class="skill-name">
-                        
+                        <span>Pare-feu (pfSense, Firewall)</span>
+                        <span>60%</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 60%"></div>
+                    </div>
                 </div>
-                <div class="skill-item">
-                    <div class="skill-name">
-                        
-                </div>
-            </div>
 
-            
-                </div>
                 <div class="skill-item">
                     <div class="skill-name">
-                        
-                </div>
-                <div class="skill-item">
-                    <div class="skill-name">
-                        
-                </div>
-            </div>
-
-            
-                </div>
-                <div class="skill-item">
-                    <div class="skill-name">
-                        
-                </div>
-                <div class="skill-item">
-                    <div class="skill-name">
-                        
+                        <span>Sensibilisation utilisateurs</span>
+                        <span>70%</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 70%"></div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Stages Section -->
+    <!-- Bloc 1 -->
+    <section id="bloc1" class="fade-in">
+        <h2 class="section-title">Bloc 1 : Support et mise à disposition de services informatiques</h2>
+
+        <div class="bloc-intro">
+            <h3>Présentation du Bloc 1</h3>
+            <p>
+                Le Bloc 1 regroupe les compétences liées au support informatique, à la gestion du patrimoine,
+                à la mise à disposition de services, à la réponse aux incidents, au travail en mode projet,
+                à la présence en ligne et au développement professionnel.
+            </p>
+            <p>
+                Pour chaque compétence, je présente un exemple d'activité réalisé en stage, en TP ou en projet,
+                avec une procédure associée lorsque cela est possible.
+            </p>
+        </div>
+
+        <div class="bloc1-grid">
+            <!-- Compétence 1 -->
+            <div class="bloc-card">
+                <div class="bloc-card-header">
+                    <h3>Gérer le patrimoine informatique</h3>
+                    <p>Inventaire, ressources, sauvegardes, habilitations</p>
+                </div>
+
+                <div class="bloc-card-body">
+                    <h4>Compétences travaillées :</h4>
+                    <ul>
+                        <li>Recenser et identifier les ressources numériques.</li>
+                        <li>Exploiter des référentiels, normes et standards.</li>
+                        <li>Mettre en place et vérifier les niveaux d’habilitation.</li>
+                        <li>Gérer des sauvegardes et contrôler la continuité d’un service.</li>
+                        <li>Vérifier le respect des règles d’utilisation des ressources numériques.</li>
+                    </ul>
+
+                    <h4>Exemples d’activités :</h4>
+                    <ul>
+                        <li>Cartographie du réseau lors du stage de première année.</li>
+                        <li>Réorganisation de la baie de brassage.</li>
+                        <li>Gestion des droits utilisateurs sur Google Drive.</li>
+                        <li>Clonage de disques et préparation de postes en stage de deuxième année.</li>
+                    </ul>
+
+                    <div class="procedure-links">
+                        <a class="procedure-link" href="procedure_bloc1_gestion_patrimoine.pdf" target="_blank">📄 Procédure : gestion du patrimoine informatique</a>
+                        <a class="procedure-link" href="RapportStage_1èreAnnée.pdf" target="_blank">📄 Exemple : rapport de stage 1ère année</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Compétence 2 -->
+            <div class="bloc-card">
+                <div class="bloc-card-header">
+                    <h3>Répondre aux incidents et aux demandes d’assistance</h3>
+                    <p>Support, diagnostic, dépannage, évolution</p>
+                </div>
+
+                <div class="bloc-card-body">
+                    <h4>Compétences travaillées :</h4>
+                    <ul>
+                        <li>Collecter, suivre et orienter des demandes.</li>
+                        <li>Traiter des demandes concernant les services réseau et système.</li>
+                        <li>Traiter des demandes concernant les applications.</li>
+                        <li>Réaliser un diagnostic et proposer une solution adaptée.</li>
+                    </ul>
+
+                    <h4>Exemples d’activités :</h4>
+                    <ul>
+                        <li>Démontage et diagnostic d’ordinateurs portables.</li>
+                        <li>Mise à jour de pilotes et résolution de problèmes matériels.</li>
+                        <li>Utilisation d’outils comme UserDiag pour analyser un poste.</li>
+                        <li>Récupération de données avec EaseUS Recovery.</li>
+                    </ul>
+
+                    <div class="procedure-links">
+                        <a class="procedure-link" href="procedure_bloc1_assistance_incidents.pdf" target="_blank">📄 Procédure : assistance et incidents</a>
+                        <a class="procedure-link" href="RapportStage_2èmeAnnée.pdf" target="_blank">📄 Exemple : rapport de stage 2ème année</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Compétence 3 -->
+            <div class="bloc-card">
+                <div class="bloc-card-header">
+                    <h3>Développer la présence en ligne de l’organisation</h3>
+                    <p>Site web, image, référencement, communication</p>
+                </div>
+
+                <div class="bloc-card-body">
+                    <h4>Compétences travaillées :</h4>
+                    <ul>
+                        <li>Participer à la valorisation de l’image de l’organisation.</li>
+                        <li>Référencer les services en ligne de l’organisation.</li>
+                        <li>Participer à l’évolution d’un site web.</li>
+                        <li>Mettre à jour des contenus numériques.</li>
+                    </ul>
+
+                    <h4>Exemples d’activités :</h4>
+                    <ul>
+                        <li>Gestion du site internet sous WordPress pendant le stage de première année.</li>
+                        <li>Mise à jour de contenus et amélioration de pages existantes.</li>
+                        <li>Création ou préparation de fiches produits avec Canva.</li>
+                        <li>Valorisation des informations de l’organisation en ligne.</li>
+                    </ul>
+
+                    <div class="procedure-links">
+                        <a class="procedure-link" href="procedure_bloc1_presence_en_ligne.pdf" target="_blank">📄 Procédure : présence en ligne</a>
+                        <a class="procedure-link" href="certification-pix.pdf" target="_blank">📄 Exemple : certification PIX</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Compétence 4 -->
+            <div class="bloc-card">
+                <div class="bloc-card-header">
+                    <h3>Travailler en mode projet</h3>
+                    <p>Objectifs, organisation, planification, suivi</p>
+                </div>
+
+                <div class="bloc-card-body">
+                    <h4>Compétences travaillées :</h4>
+                    <ul>
+                        <li>Analyser les objectifs et les modalités d’organisation d’un projet.</li>
+                        <li>Planifier les activités.</li>
+                        <li>Évaluer les indicateurs de suivi d’un projet.</li>
+                        <li>Analyser les écarts entre les objectifs et le résultat obtenu.</li>
+                    </ul>
+
+                    <h4>Exemples d’activités :</h4>
+                    <ul>
+                        <li>Projet RP1 : mise en place d’un accès distant sécurisé VPN OpenVPN via pfSense.</li>
+                        <li>Projet RP2 : conception d’une infrastructure haute disponibilité avec service web et DNS.</li>
+                        <li>Organisation des étapes de réalisation et production de procédures.</li>
+                    </ul>
+
+                    <div class="procedure-links">
+                        <a class="procedure-link" href="procedure_bloc1_mode_projet.pdf" target="_blank">📄 Procédure : travail en mode projet</a>
+                        <a class="procedure-link" href="procedure_RP1.pdf" target="_blank">📄 Exemple : procédure RP1</a>
+                        <a class="procedure-link" href="Procedure_RP2.pdf" target="_blank">📄 Exemple : procédure RP2</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Compétence 5 -->
+            <div class="bloc-card">
+                <div class="bloc-card-header">
+                    <h3>Mettre à disposition des utilisateurs un service informatique</h3>
+                    <p>Tests, déploiement, accompagnement</p>
+                </div>
+
+                <div class="bloc-card-body">
+                    <h4>Compétences travaillées :</h4>
+                    <ul>
+                        <li>Réaliser les tests d’intégration et d’acceptation d’un service.</li>
+                        <li>Déployer un service informatique.</li>
+                        <li>Accompagner les utilisateurs dans la mise en place d’un service.</li>
+                        <li>Documenter le service mis à disposition.</li>
+                    </ul>
+
+                    <h4>Exemples d’activités :</h4>
+                    <ul>
+                        <li>Mise en place d’une nouvelle arborescence de fichiers.</li>
+                        <li>Gestion des droits d’accès sur Google Drive.</li>
+                        <li>Déploiement d’un VPN OpenVPN avec pfSense.</li>
+                        <li>Tests d’accès aux services web et DNS dans le projet RP2.</li>
+                    </ul>
+
+                    <div class="procedure-links">
+                        <a class="procedure-link" href="procedure_bloc1_service_informatique.pdf" target="_blank">📄 Procédure : mise à disposition d’un service</a>
+                        <a class="procedure-link" href="FicheRP_Num1.pdf" target="_blank">📄 Exemple : fiche descriptive RP1</a>
+                        <a class="procedure-link" href="FicheRP_Num2.pdf" target="_blank">📄 Exemple : fiche descriptive RP2</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Compétence 6 -->
+            <div class="bloc-card">
+                <div class="bloc-card-header">
+                    <h3>Organiser son développement professionnel</h3>
+                    <p>Veille, identité professionnelle, apprentissage</p>
+                </div>
+
+                <div class="bloc-card-body">
+                    <h4>Compétences travaillées :</h4>
+                    <ul>
+                        <li>Mettre en place son environnement d’apprentissage personnel.</li>
+                        <li>Mettre en œuvre des outils et stratégies de veille informationnelle.</li>
+                        <li>Gérer son identité professionnelle.</li>
+                        <li>Développer son projet professionnel.</li>
+                    </ul>
+
+                    <h4>Exemples d’activités :</h4>
+                    <ul>
+                        <li>Réalisation d’une veille technologique sur les fuites de données et les piratages.</li>
+                        <li>Utilisation de Google Alerts et de sites spécialisés.</li>
+                        <li>Obtention de certifications comme PIX et MOOC EBIOS.</li>
+                        <li>Création et mise à jour de ce portfolio professionnel.</li>
+                    </ul>
+
+                    <div class="procedure-links">
+                        <a class="procedure-link" href="procedure_bloc1_developpement_professionnel.pdf" target="_blank">📄 Procédure : développement professionnel</a>
+                        <a class="procedure-link" href="certification-mooc.pdf" target="_blank">📄 Exemple : certification MOOC EBIOS</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stages -->
     <section id="stages" class="fade-in">
         <h2 class="section-title">Expériences professionnelles</h2>
+
         <div class="stage-timeline">
-            <!-- Stage 1 - À personnaliser -->
+            <!-- Stage 1 -->
             <div class="stage-item">
                 <div class="stage-card">
                     <div class="stage-header">
                         <h3 class="stage-title">Stage 1ère année</h3>
-                        <p class="stage-company">Fédération Des Centre Sociaux De La Nièvre</p>
+                        <p class="stage-company">Fédération Des Centres Sociaux De La Nièvre</p>
                         <p class="stage-date">2 juin 2025 - 4 juillet 2025 | 6 semaines</p>
                     </div>
+
                     <div class="stage-content">
-                    <div class="stage-link">
-                        <a href="RapportStage_1èreAnnée.pdf" target="_blank">📄 Voir le rapport de stage</a>
-                    </div>
-                    
+                        <div class="stage-link">
+                            <a href="RapportStage_1èreAnnée.pdf" target="_blank">📄 Voir le rapport de stage</a>
+                        </div>
 
                         <h4>Missions principales :</h4>
                         <ul>
-                            <li>Cartographie du réseaux</li>
-                            <li>Réorganisation de la baie de brassage</li>
-                            <li>Gestion du site internet</li>
-                            <li>Gestion des droits utilisateurs sur le drive</li>
-                            <li>Mise en place d'une nouvelle arborescence de fichiers</li>
-                            <li>Sensibilisation aux risques informatiques</li>
+                            <li>Cartographie du réseau.</li>
+                            <li>Réorganisation de la baie de brassage.</li>
+                            <li>Gestion du site internet.</li>
+                            <li>Gestion des droits utilisateurs sur le Drive.</li>
+                            <li>Mise en place d'une nouvelle arborescence de fichiers.</li>
+                            <li>Sensibilisation aux risques informatiques.</li>
                         </ul>
-                        <h4>Outils utilisées :</h4>
+
+                        <h4>Outils utilisés :</h4>
                         <div class="tech-tags">
-                            <span class="tech-tag">Wordpress</span>
-                            <span class="tech-tag">Google my maps</span>
-                            <span class="tech-tag">Google drive</span>
+                            <span class="tech-tag">WordPress</span>
+                            <span class="tech-tag">Google My Maps</span>
+                            <span class="tech-tag">Google Drive</span>
                             <span class="tech-tag">Cisco Packet Tracer</span>
                         </div>
+
                         <h4>Compétences acquises :</h4>
                         <ul>
-                            <li>Compétences en administration réseau</li>
-                            <li>Compétences en gestion de données</li>
-                            <li>Compétences en sécurité informatique</li>
-                            <li>Compétences en gestion de projet</li>
+                            <li>Compétences en administration réseau.</li>
+                            <li>Compétences en gestion de données.</li>
+                            <li>Compétences en sécurité informatique.</li>
+                            <li>Compétences en gestion de projet.</li>
                         </ul>
                     </div>
                 </div>
             </div>
 
-            <!-- Stage 2 - À personnaliser -->
+            <!-- Stage 2 -->
             <div class="stage-item">
                 <div class="stage-card">
                     <div class="stage-header">
@@ -1038,34 +1346,36 @@
                         <p class="stage-company">Page 404 Informatique</p>
                         <p class="stage-date">19 janvier 2026 - 13 mars 2026 | 8 semaines</p>
                     </div>
+
                     <div class="stage-content">
-                    <div class="stage-link">
-                        <a href="RapportStage_2èmeAnnée.pdf" target="_blank">📄 Voir le rapport de stage</a>
-                    </div>
-                        
+                        <div class="stage-link">
+                            <a href="RapportStage_2èmeAnnée.pdf" target="_blank">📄 Voir le rapport de stage</a>
+                        </div>
 
                         <h4>Missions principales :</h4>
                         <ul>
-                            <li>demontage ordinateurs portables</li>
-                            <li>mise a jour de drivers</li>
-                            <li>clonage de disques</li>
-                            <li>Montage de PC</li>
-                            <li>préparation des fiches produits</li>
+                            <li>Démontage d’ordinateurs portables.</li>
+                            <li>Mise à jour de drivers.</li>
+                            <li>Clonage de disques.</li>
+                            <li>Montage de PC.</li>
+                            <li>Préparation de fiches produits.</li>
                         </ul>
-                        <h4>Outils utilisées :</h4>
+
+                        <h4>Outils utilisés :</h4>
                         <div class="tech-tags">
-                            <span class="tech-tag">outil driver</span>
-                            <span class="tech-tag">EaseUS partition master</span>
-                            <span class="tech-tag">EaseUS recovery</span>
-                            <span class="tech-tag">canva</span>
-                            <span class="tech-tag">userdiag</span>
+                            <span class="tech-tag">Outil driver</span>
+                            <span class="tech-tag">EaseUS Partition Master</span>
+                            <span class="tech-tag">EaseUS Recovery</span>
+                            <span class="tech-tag">Canva</span>
+                            <span class="tech-tag">UserDiag</span>
                         </div>
+
                         <h4>Compétences acquises :</h4>
                         <ul>
-                            <li>Gestion et maintenance du patrimoine informatique</li>
-                            <li>Mise à disposition des utilisateurs d’un service informatique</li>
-                            <li>Installation, test et déploiement d’une solution d’infrastructure réseau</li>
-                            <li>Exploitation, dépannage et supervision d’une solution d’infrastructure réseau</li>
+                            <li>Gestion et maintenance du patrimoine informatique.</li>
+                            <li>Mise à disposition des utilisateurs d’un service informatique.</li>
+                            <li>Installation, test et déploiement d’une solution d’infrastructure réseau.</li>
+                            <li>Exploitation, dépannage et supervision d’une solution d’infrastructure réseau.</li>
                         </ul>
                     </div>
                 </div>
@@ -1073,86 +1383,71 @@
         </div>
     </section>
 
-    <!-- Projets Section -->
-    
-<section id="projets" class="fade-in">
-    <h2 class="section-title">Epreuves E5 et E6</h2>
+    <!-- Epreuves E5/E6 -->
+    <section id="projets" class="fade-in">
+        <h2 class="section-title">Epreuves E5 et E6</h2>
 
-    <div class="projects-grid">
+        <div class="projects-grid">
+            <!-- Projet 1 -->
+            <div class="project-card">
+                <div class="project-header">
+                    <div class="project-icon">💼</div>
+                    <h3 class="project-title">Projet 1</h3>
+                    <p class="project-subtitle">RP1</p>
+                </div>
 
-        <!-- Projet 1 -->
-        <div class="project-card">
-            <div class="project-header">
-                <div class="project-icon">💼</div>
-                <h3 class="project-title">Projet 1</h3>
-                <p class="project-subtitle">RP1</p>
+                <div class="project-body">
+                    <p class="project-description">
+                        Mise en place d’un accès distant sécurisé avec VPN OpenVPN via pfSense.
+                    </p>
+
+                    <a class="project-link" href="FicheRP_Num1.pdf" target="_blank">📄 Fiche descriptive</a>
+                    <a class="project-link" href="procedure_RP1.pdf" target="_blank">📄 Procédure</a>
+                </div>
             </div>
 
-            <div class="project-body">
-                <p class="project-description">
-                    Mise en place d’un accès distant sécurisé (VPN OpenVPN via PfSense).
-                </p>
+            <!-- Projet 2 -->
+            <div class="project-card">
+                <div class="project-header">
+                    <div class="project-icon">🖥️</div>
+                    <h3 class="project-title">Projet 2</h3>
+                    <p class="project-subtitle">RP2</p>
+                </div>
 
-                <a href="FicheRP_Num1.pdf" target="_blank" style="display: block; margin-bottom: 10px;">
-                    📄 Fiche descriptive
-                </a>
-                <a href="procedure_RP1.pdf" target="_blank" style="display: block;">
-                    📄 Procedure
-                </a>
-            </div>
-        </div>
+                <div class="project-body">
+                    <p class="project-description">
+                        Conception et déploiement d’une infrastructure haute disponibilité avec service web et résolution DNS.
+                    </p>
 
-        <!-- Projet 2 -->
-        <div class="project-card">
-            <div class="project-header">
-                <div class="project-icon">🖥️</div>
-                <h3 class="project-title">Projet 2</h3>
-                <p class="project-subtitle">RP2</p>
+                    <a class="project-link" href="FicheRP_Num2.pdf" target="_blank">📄 Fiche descriptive</a>
+                    <a class="project-link" href="Procedure_RP2.pdf" target="_blank">📄 Procédure</a>
+                </div>
             </div>
 
-            <div class="project-body">
-                <p class="project-description">
-                    Conception et déploiement d’une infrastructure haute disponibilité avec service web et résolution DNS.
-                </p>
+            <!-- Tableau E5 -->
+            <div class="project-card">
+                <div class="project-header">
+                    <div class="project-icon">📊</div>
+                    <h3 class="project-title">Tableau de synthèse E5</h3>
+                    <p class="project-subtitle">Épreuve BTS SIO SISR</p>
+                </div>
 
-                 <a href="FicheRP_Num2.pdf" target="_blank" style="display: block; margin-bottom: 10px;">
-                    📄 Fiche descriptive
-                </a>
-                <a href="Procedure_RP2.pdf" target="_blank" style="display: block;">
-                    📄 Procedure
-                </a>
+                <div class="project-body">
+                    <p class="project-description">
+                        Tableau de synthèse des compétences acquises durant mes stages et projets
+                        en lien avec le référentiel du BTS SIO option SISR.
+                    </p>
+
+                    <a class="project-link" href="TableauDeSynthèseEpreuveE5.pdf" target="_blank">📄 Voir le tableau de synthèse</a>
+                </div>
             </div>
         </div>
+    </section>
 
-    </div>
-    <div style="margin-top: 60px;"></div>
-    <!-- 🔥 NOUVELLE CASE E5 -->
-    <div class="project-card">
-        <div class="project-header">
-            <div class="project-icon">📊</div>
-            <h3 class="project-title">Tableau de synthèse E5</h3>
-            <p class="project-subtitle">Épreuve BTS SIO SISR</p>
-        </div>
-
-        <div class="project-body">
-            <p class="project-description">
-                Tableau de synthèse des compétences acquises durant mes stages et projets 
-                en lien avec le référentiel du BTS SIO option SISR.
-            </p>
-
-            <a href="TableauDeSynthèseEpreuveE5.pdf" target="_blank" style="display: block;">
-                📄 Voir le tableau de synthèse
-            </a>
-        </div>
-    </div>
-
-</div>
-</section>
-
-
-    <!-- Certifications Section -->
+    <!-- Certifications & Veille -->
     <section id="certifications" class="fade-in">
         <h2 class="section-title">Certifications & Veille Technologique</h2>
+
         <div class="certif-grid">
             <a href="certification-pix.pdf" target="_blank" style="text-decoration:none;">
                 <div class="certif-item">
@@ -1160,124 +1455,97 @@
                     <h3 class="certif-name">PIX</h3>
                 </div>
             </a>
+
             <a href="certification-mooc.pdf" target="_blank" style="text-decoration:none;">
                 <div class="certif-item">
                     <div class="certif-icon">🔐</div>
-                    <h3 class="certif-name">Mooc EBIOS</h3>
-                </div>   
-            </a>      
-            
-     
+                    <h3 class="certif-name">MOOC EBIOS</h3>
+                </div>
+            </a>
         </div>
 
         <div class="veille-section">
-    <h3>Veille Technologique Continue</h3>
+            <h3>Veille Technologique Continue</h3>
 
-    <p style="color: var(--gray); margin-bottom: 2rem;">
-        Ma veille porte sur les fuites de données et les piratages en France.
-        Ces incidents touchent aussi bien les grandes entreprises que les
-        institutions publiques et peuvent avoir des conséquences financières
-        et juridiques importantes.
-    </p>
+            <p>
+                Ma veille porte sur les fuites de données et les piratages en France.
+                Ces incidents touchent aussi bien les grandes entreprises que les institutions publiques
+                et peuvent avoir des conséquences financières et juridiques importantes.
+            </p>
 
-    <div class="veille-items">
+            <div class="veille-items">
+                <div class="veille-item">
+                    <strong>Outils de veille :</strong><br><br>
+                    • Outil automatique : Google Alerts<br>
+                    • Outil manuel : sites d’actualité spécialisés<br>
+                    • Réseau social : X
+                </div>
 
-        <div class="veille-item">
-            <strong>Outils de veille :</strong><br><br>
-            • Outil automatique : Google Alerts<br>
-            • Outil manuel : Sites d’actualité spécialisés<br>
-            • Réseau social : X
+                <div class="veille-item">
+                    <strong>Thématiques :</strong><br><br>
+                    • Fuites de données<br>
+                    • Piratage<br>
+                    • Cybersécurité
+                </div>
+            </div>
+
+            <div class="veille-exemples">
+                <h4>Exemples issus de ma veille</h4>
+
+                <div class="veille-exemples-grid">
+                    <div class="veille-exemple-card">
+                        <strong>WhatsApp</strong><br>
+                        <span>Faille massive : numéros et photos de profil concernés.</span>
+                    </div>
+
+                    <div class="veille-exemple-card">
+                        <strong>Stellantis</strong><br>
+                        <span>Vol d’enregistrements dans un groupe automobile international.</span>
+                    </div>
+
+                    <div class="veille-exemple-card">
+                        <strong>Bouygues Telecom</strong><br>
+                        <span>Clients touchés par une fuite de données.</span>
+                    </div>
+
+                    <div class="veille-exemple-card">
+                        <strong>Urssaf</strong><br>
+                        <span>Usagers concernés par une compromission de données.</span>
+                    </div>
+                </div>
+            </div>
         </div>
-
-        <div class="veille-item">
-            <strong>Thématiques :</strong><br><br>
-            • Fuites de données<br>
-            • Piratage
-        </div>
-
-    </div>
-
-    <!-- Bloc exemples plus large -->
-    <div style="
-        margin-top: 2.5rem;
-        background: rgba(0, 102, 255, 0.08);
-        padding: 2rem;
-        border-radius: 8px;
-        border-left: 4px solid var(--accent);
-    ">
-        <h4 style="color: var(--accent); margin-bottom: 1.5rem; font-size:1.2rem;">
-            Exemples issus de ma veille
-        </h4>
-
-        <div style="
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-        ">
-
-            <div style="background: var(--dark); padding: 1.2rem; border-radius:6px; border:1px solid rgba(100,255,218,0.15);">
-                <strong style="color: var(--white);">WhatsApp</strong><br>
-                <span style="color: var(--gray);">
-                    Faille massive : 3,5 milliards de numéros et photos de profil concernés.
-                </span>
-            </div>
-
-            <div style="background: var(--dark); padding: 1.2rem; border-radius:6px; border:1px solid rgba(100,255,218,0.15);">
-                <strong style="color: var(--white);">Stellantis</strong><br>
-                <span style="color: var(--gray);">
-                    18 millions d’enregistrements volés (groupe automobile international).
-                </span>
-            </div>
-
-            <div style="background: var(--dark); padding: 1.2rem; border-radius:6px; border:1px solid rgba(100,255,218,0.15);">
-                <strong style="color: var(--white);">Bouygues Telecom</strong><br>
-                <span style="color: var(--gray);">
-                    6 millions de clients touchés par une fuite de données.
-                </span>
-            </div>
-
-            <div style="background: var(--dark); padding: 1.2rem; border-radius:6px; border:1px solid rgba(100,255,218,0.15);">
-                <strong style="color: var(--white);">Urssaf</strong><br>
-                <span style="color: var(--gray);">
-                    1,2 million d’usagers concernés par une compromission de données.
-                </span>
-            </div>
-
-        </div>
-    </div>
-</div>
-
-  
+    </section>
 
     <!-- Footer -->
     <footer>
-
         <div style="margin-top:15px;">
-        <p>Pour me contacter, vous pouvez m'écrire à : 
-            <a href="mailto:louis.guezet21@gmail.com">louis.guezet21@gmail.com</a>
-        </p>
+            <p>
+                Pour me contacter, vous pouvez m'écrire à :
+                <a href="mailto:louis.guezet21@gmail.com">louis.guezet21@gmail.com</a>
+            </p>
         </div>
+
         <br>
+
         <div style="margin-top:15px;">
             <p>© 2025 Louis Guézet - Portfolio BTS SIO SISR - Tous droits réservés</p>
         </div>
+
         <div style="margin-top:15px;">
-            <a href="Mentions Légales.pdf" target="_blank" class="cv-footer">
-                 Mentions Légales
-            </a>
+            <a href="Mentions Légales.pdf" target="_blank" class="cv-footer">Mentions Légales</a>
         </div>
-        
-       
     </footer>
 
-    <!-- Scroll Animation Script -->
+    <!-- Scripts -->
     <script>
-        // Smooth scroll for navigation links
+        // Smooth scroll pour les liens de navigation
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
-                e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
+
                 if (target) {
+                    e.preventDefault();
                     target.scrollIntoView({
                         behavior: 'smooth',
                         block: 'start'
@@ -1286,7 +1554,7 @@
             });
         });
 
-        // Fade in animation on scroll
+        // Animation fade-in au scroll
         const observerOptions = {
             threshold: 0.1,
             rootMargin: '0px 0px -100px 0px'
@@ -1304,34 +1572,31 @@
             observer.observe(element);
         });
 
-        // Animate skill bars on scroll
+        // Animation des barres de compétences
         const skillObserver = new IntersectionObserver(function(entries) {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     const progressBars = entry.target.querySelectorAll('.skill-progress');
+
                     progressBars.forEach(bar => {
                         const width = bar.style.width;
                         bar.style.width = '0';
+
                         setTimeout(() => {
                             bar.style.width = width;
                         }, 100);
                     });
+
                     skillObserver.unobserve(entry.target);
                 }
             });
         }, observerOptions);
 
         const skillsSection = document.querySelector('#competences');
+
         if (skillsSection) {
             skillObserver.observe(skillsSection);
         }
-
-        // Form submission handler (à personnaliser avec votre backend)
-        document.querySelector('.contact-form form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('Merci pour votre message ! Je vous répondrai dans les plus brefs délais.');
-            this.reset();
-        });
     </script>
 </body>
 </html>
